@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy 18th Birthday Jaan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #ffc0cb, #ffb6c1, #ff69b4);
+      font-family: 'Arial', sans-serif;
+      color: #8b0000;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .header {
+      margin: 30px 0;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      color: #d80032;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+    }
+    
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin: auto;
+      margin-top: 30px;
+    }
+    
+    .mySlides {
+      display: none;
+      animation: fade 1.5s ease-in-out;
+    }
+    
+    .mySlides img {
+      width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+    
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0,0,0,0.3);
+    }
+    
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    
+    .text {
+      color: #d80032;
+      font-size: 1.2rem;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(255,255,255,0.7);
+    }
+    
+    .dot-container {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #ffb6c1;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    
+    .active, .dot:hover {
+      background-color: #d80032;
+    }
+    
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .prev, .next {
+        font-size: 14px;
+        padding: 12px;
+      }
+      
+      .text {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Happy 18th Birthday to You Jaan</h1>
+  </div>
+  
+  <div class="slideshow-container">
+    <!-- Slides -->
+    <div class="mySlides fade">
+      <img src="images/photo1.jpg">
+      <div class="text">My Beautiful Jaan</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="images/photo2.jpg">
+      <div class="text">I Love You</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="images/photo3.jpg">
+      <div class="text">You're My Everything</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="images/photo4.jpg">
+      <div class="text">Happy Birthday</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="images/photo5.jpg">
+      <div class="text">My Love</div>
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="images/photo6.jpg">
+      <div class="text">Forever Yours</div>
+    </div>
+    
+    <!-- Add 6 more slides following the same pattern -->
+    
+    <!-- Navigation arrows -->
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+  </div>
+  
+  <div class="dot-container">
+    <span class="dot" onclick="currentSlide(1)"></span> 
+    <span class="dot" onclick="currentSlide(2)"></span> 
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <!-- Add more dots if you add more slides -->
+  </div>
+  
+  <script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+    }
+    
+    // Auto slide change every 5 seconds
+    setInterval(function() {
+      plusSlides(1);
+    }, 5000);
+  </script>
+</body>
+</html>
